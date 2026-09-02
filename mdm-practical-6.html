@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center bg-gradient-to-r from-rose-400 via-pink-500 to-yellow-500">
+
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+
+        <h1 class="text-2xl font-bold text-center mb-6">
+            Student Marks
+        </h1>
+
+        <table class="w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-rose-500 text-white">
+                    <th class="border border-gray-300 p-3">Subject</th>
+                    <th class="border border-gray-300 p-3">Marks</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td class="border border-gray-300 p-3">Mathematics</td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="number" id="math"
+                            class="w-full border rounded p-2"
+                            min="0" max="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 p-3">Physics</td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="number" id="physics"
+                            class="w-full border rounded p-2"
+                            min="0" max="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 p-3">Chemistry</td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="number" id="chemistry"
+                            class="w-full border rounded p-2"
+                            min="0" max="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 p-3">Computer Science</td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="number" id="computer"
+                            class="w-full border rounded p-2"
+                            min="0" max="100">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 p-3">English</td>
+                    <td class="border border-gray-300 p-3">
+                        <input type="number" id="english"
+                            class="w-full border rounded p-2"
+                            min="0" max="100">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="calculate()" class="mt-5 w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 rounded-lg">
+            Calculate
+        </button>
+
+        <div class="mt-5 bg-gray-50 p-4 rounded-lg border">
+
+            <p class="text-lg font-semibold">
+                Total Marks:
+                <span id="total" class="text-rose-600">0</span> / 500
+            </p>
+
+            <p class="text-lg font-semibold mt-2">
+                Percentage:
+                <span id="percentage" class="text-rose-600">0</span>%
+            </p>
+
+            <p class="text-lg font-semibold mt-2">
+                Grade:
+                <span id="grade" class="text-rose-600">-</span>
+            </p>
+
+        </div>
+
+    </div>
+
+    <script>
+        function calculate() {
+
+            let math = Number(document.getElementById("math").value);
+            let physics = Number(document.getElementById("physics").value);
+            let chemistry = Number(document.getElementById("chemistry").value);
+            let computer = Number(document.getElementById("computer").value);
+            let english = Number(document.getElementById("english").value);
+
+            let total = math + physics + chemistry + computer + english;
+
+            let percentage = (total / 500) * 100;
+
+            let grade;
+
+            if (percentage >= 90) {
+                grade = "A+";
+            } else if (percentage >= 80) {
+                grade = "A";
+            } else if (percentage >= 70) {
+                grade = "B";
+            } else if (percentage >= 60) {
+                grade = "C";
+            } else if (percentage >= 50) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            document.getElementById("total").innerText = total;
+            document.getElementById("percentage").innerText = percentage.toFixed(2);
+            document.getElementById("grade").innerText = grade;
+        }
+    </script>
+
+</body>
+</html>
